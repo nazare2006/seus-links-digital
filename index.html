@@ -1,43 +1,33 @@
 
 
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://cdn-icons-png.flaticon.com https://api.qrserver.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' 'unsafe-inline'; frame-src 'self' https://www.google.com/recaptcha/;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta name="X-Frame-Options" content="DENY">
     <title>Meus Links</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-XXXXX-Y');
-    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             text-align: center;
             padding: 20px;
+            margin: 0;
             transition: background 0.3s, color 0.3s;
         }
         .container {
             max-width: 400px;
             background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
             margin: auto;
             animation: fadeIn 1s ease-in-out;
         }
         h1 {
-            font-size: 22px;
+            font-size: 24px;
             color: #333;
+            margin-bottom: 15px;
         }
         .contact-form {
             margin-top: 20px;
@@ -45,46 +35,66 @@
         }
         .contact-form input, .contact-form textarea {
             width: 100%;
-            padding: 10px;
-            margin: 5px 0;
+            padding: 12px;
+            margin: 8px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 6px;
+            font-size: 16px;
         }
         .contact-form button {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background: #007bff;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 16px;
             transition: background 0.3s;
         }
         .contact-form button:hover {
             background: #0056b3;
         }
-        .social-icons img {
-            width: 40px;
-            margin: 5px;
-            transition: transform 0.3s;
-        }
-        .social-icons img:hover {
-            transform: scale(1.1);
-        }
         .qr-code {
             margin-top: 20px;
         }
+        .qr-code img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
         .copy-link {
+            margin-top: 15px;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
             background: #28a745;
             color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
             transition: background 0.3s;
         }
         .copy-link:hover {
             background: #218838;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+        .toggle-dark-mode {
+            margin-top: 15px;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            background: #555;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .toggle-dark-mode:hover {
+            background: #777;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -95,37 +105,61 @@
 <body>
     <div class="container">
         <h1>Ricardo Lima - Criador de Conteúdo</h1>
-        <form class="contact-form" action="#" method="POST">
-            <input type="text" name="name" placeholder="Seu Nome" required>
+        <p>Olá! Sou criador de conteúdo digital. Entre em contato comigo!</p>
+        <form class="contact-form" action="https://formspree.io/f/xeoazdrd" method="POST" onsubmit="return validarFormulario()">
+            <input type="text" name="name" placeholder="Seu Nome" required maxlength="50">
             <input type="email" name="email" placeholder="Seu Email" required>
-            <textarea name="message" placeholder="Sua Mensagem" required></textarea>
-            <div class="g-recaptcha" data-sitekey="SUA-CHAVE-SITE"></div>
-            <button type="submit">Enviar</button>
+            <textarea name="message" placeholder="Sua Mensagem" required maxlength="300"></textarea>
+            <input type="text" name="honeypot" style="display:none;">
+            <button type="submit" id="submit-btn">Enviar</button>
         </form>
-        <p>Visite nossas redes sociais:</p>
-        <div class="social-icons">
-            <a href="https://www.instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram"></a>
-            <a href="https://www.facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png" alt="Facebook"></a>
-            <a href="https://twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384065.png" alt="Twitter"></a>
-            <a href="https://www.tiktok.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok"></a>
-        </div>
+        <br>
         <div class="qr-code">
             <p>Escaneie o QR Code para acessar este site:</p>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://nazare2006.github.io/seu-link-digital/" alt="QR Code">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://nazare2006.github.io/seus-links-digital/" alt="QR Code">
         </div>
         <button class="copy-link" onclick="copyToClipboard()">Copiar Link</button>
-        <br><br>
-        <a href="pagamento.html" class="copy-link">💰 Fazer Pagamento</a>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">Ativar Modo Escuro</button>
     </div>
+    
     <script>
+        function validarFormulario() {
+            let email = document.querySelector('input[name="email"]').value;
+            let mensagem = document.querySelector('textarea[name="message"]').value;
+            let honeypot = document.querySelector('input[name="honeypot"]').value;
+            let submitBtn = document.getElementById('submit-btn');
+
+            if (honeypot !== "") {
+                alert("Erro ao enviar mensagem. Tente novamente.");
+                return false;
+            }
+
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Por favor, insira um email válido.");
+                return false;
+            }
+
+            if (mensagem.length < 10) {
+                alert("A mensagem deve ter pelo menos 10 caracteres.");
+                return false;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Enviando...";
+            return true;
+        }
+        
         function copyToClipboard() {
-            const link = "https://nazare2006.github.io/seu-link-digital/";
+            const link = "https://nazare2006.github.io/seus-links-digital/";
             navigator.clipboard.writeText(link).then(() => {
                 alert("Link copiado com sucesso!");
             });
         }
+        
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
     </script>
-    <script src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y" async defer></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
