@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="X-Frame-Options" content="DENY">
+    <title>Página de Pagamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 400px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        h1 {
+            font-size: 22px;
+            color: #333;
+        }
+        .payment-options {
+            margin-top: 20px;
+        }
+        .payment-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+        }
+        .mbway {
+            background: #FF0000;
+        }
+        .cartao {
+            background: #007bff;
+        }
+        .stripe {
+            background: #6772e5;
+        }
+        .payment-button:hover {
+            opacity: 0.8;
+        }
+        .loader {
+            display: none;
+            margin: 20px auto;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+        .back-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 15px;
+            background: #555;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha o Método de Pagamento</h1>
+        <div class="payment-options">
+            <button class="payment-button mbway" onclick="confirmPayment('MbWay', 'https://www.mbway.pt')">💳 Pagar com MbWay</button>
+            <button class="payment-button cartao" onclick="confirmPayment('Cartão de Crédito', 'https://www.paypal.com')">💳 Pagar com Cartão de Crédito (PayPal)</button>
+        </div>
+        
+        <div class="message" id="confirmationMessage">
+            Obrigado pelo seu pagamento! Já recebemos sua transação. ✅
+        </div>
+        
+        <a href="index.html" class="back-button" id="backButton">⬅ Voltar para a Página Inicial</a>
+    </div>
+
+    <script>
+        function confirmPayment(method, url) {
+            document.getElementById("confirmationMessage").style.display = "block";
+            setTimeout(() => {
+                window.location.href = url;
+            }, 3000); // Redireciona para o pagamento após 3 segundos
+        }
+    </script>
+</body>
+</html>
