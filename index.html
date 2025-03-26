@@ -1,11 +1,11 @@
 
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Links</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,6 +28,19 @@
             font-size: 24px;
             color: #333;
             margin-bottom: 15px;
+        }
+        .social-links {
+            margin: 20px 0;
+        }
+        .social-links a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #0056b3;
         }
         .contact-form {
             margin-top: 20px;
@@ -77,24 +90,21 @@
         .copy-link:hover {
             background: #218838;
         }
-        .dark-mode {
-            background-color: #333;
-            color: white;
+        .payment-section {
+            margin-top: 20px;
         }
-        .toggle-dark-mode {
-            margin-top: 15px;
+        .payment-section a {
+            display: block;
             padding: 12px;
-            width: 100%;
-            border: none;
+            background: #ffc107;
+            color: #333;
+            text-decoration: none;
             border-radius: 6px;
-            background: #555;
-            color: white;
-            cursor: pointer;
+            margin: 10px 0;
             font-size: 16px;
-            transition: background 0.3s;
         }
-        .toggle-dark-mode:hover {
-            background: #777;
+        .payment-section a:hover {
+            background: #e0a800;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -106,6 +116,13 @@
     <div class="container">
         <h1>Ricardo Lima - Criador de Conteúdo</h1>
         <p>Olá! Sou criador de conteúdo digital. Entre em contato comigo!</p>
+        
+        <div class="social-links">
+            <a href="https://www.tiktok.com/@seu_perfil" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/seu_perfil" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/c/seu_canal" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        
         <form class="contact-form" action="https://formspree.io/f/xeoazdrd" method="POST" onsubmit="return validarFormulario()">
             <input type="text" name="name" placeholder="Seu Nome" required maxlength="50">
             <input type="email" name="email" placeholder="Seu Email" required>
@@ -113,53 +130,19 @@
             <input type="text" name="honeypot" style="display:none;">
             <button type="submit" id="submit-btn">Enviar</button>
         </form>
-        <br>
+        
+        <div class="payment-section">
+            <h2>Formas de Pagamento</h2>
+            <a href="#">Pagar com PayPal</a>
+            <a href="#">Pagar com Pix</a>
+            <a href="#">Pagar com Cartão de Crédito</a>
+        </div>
+        
         <div class="qr-code">
             <p>Escaneie o QR Code para acessar este site:</p>
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://nazare2006.github.io/seus-links-digital/" alt="QR Code">
         </div>
         <button class="copy-link" onclick="copyToClipboard()">Copiar Link</button>
-        <button class="toggle-dark-mode" onclick="toggleDarkMode()">Ativar Modo Escuro</button>
     </div>
-    
-    <script>
-        function validarFormulario() {
-            let email = document.querySelector('input[name="email"]').value;
-            let mensagem = document.querySelector('textarea[name="message"]').value;
-            let honeypot = document.querySelector('input[name="honeypot"]').value;
-            let submitBtn = document.getElementById('submit-btn');
-
-            if (honeypot !== "") {
-                alert("Erro ao enviar mensagem. Tente novamente.");
-                return false;
-            }
-
-            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert("Por favor, insira um email válido.");
-                return false;
-            }
-
-            if (mensagem.length < 10) {
-                alert("A mensagem deve ter pelo menos 10 caracteres.");
-                return false;
-            }
-
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Enviando...";
-            return true;
-        }
-        
-        function copyToClipboard() {
-            const link = "https://nazare2006.github.io/seus-links-digital/";
-            navigator.clipboard.writeText(link).then(() => {
-                alert("Link copiado com sucesso!");
-            });
-        }
-        
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-    </script>
 </body>
 </html>
