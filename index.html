@@ -15,6 +15,27 @@
             margin: 0;
             transition: background 0.3s, color 0.3s;
         }
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #007bff;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .top-nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        .top-nav a:hover, .active {
+            color: #ff4500;
+        }
         .container {
             max-width: 400px;
             background: #fff;
@@ -22,6 +43,7 @@
             border-radius: 12px;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
             margin: auto;
+            margin-top: 60px;
             animation: fadeIn 1s ease-in-out;
         }
         h1 {
@@ -113,36 +135,50 @@
     </style>
 </head>
 <body>
+    <div class="top-nav">
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="categorias.html">Categorias</a>
+        <a href="ofertas.html">Ofertas</a>
+        <a href="detalhes.html">Detalhes</a>
+        <a href="contato.html">Contato</a>
+    </div>
     <div class="container">
         <h1>Ricardo Lima - Criador de Conteúdo</h1>
         <p>Olá! Sou criador de conteúdo digital. Entre em contato comigo!</p>
-        
         <div class="social-links">
             <a href="https://www.tiktok.com/@seu_perfil" target="_blank"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.instagram.com/seu_perfil" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.youtube.com/c/seu_canal" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
-        
-        <form class="contact-form" action="https://formspree.io/f/xeoazdrd" method="POST" onsubmit="return validarFormulario()">
+        <form class="contact-form" action="https://formspree.io/f/xeoazdrd" method="POST">
             <input type="text" name="name" placeholder="Seu Nome" required maxlength="50">
             <input type="email" name="email" placeholder="Seu Email" required>
             <textarea name="message" placeholder="Sua Mensagem" required maxlength="300"></textarea>
-            <input type="text" name="honeypot" style="display:none;">
-            <button type="submit" id="submit-btn">Enviar</button>
+            <button type="submit">Enviar</button>
         </form>
-        
         <div class="payment-section">
             <h2>Formas de Pagamento</h2>
-            <a href="#">Pagar com PayPal</a>
-            <a href="#">Pagar com Pix</a>
-            <a href="#">Pagar com Cartão de Crédito</a>
+            <a href="pagamento.html?tipo=paypal">Pagar com PayPal</a>
+            <a href="pagamento.html?tipo=pix">Pagar com Pix</a>
+            <a href="pagamento.html?tipo=cartao">Pagar com Cartão de Crédito</a>
         </div>
-        
         <div class="qr-code">
             <p>Escaneie o QR Code para acessar este site:</p>
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://nazare2006.github.io/seus-links-digital/" alt="QR Code">
         </div>
         <button class="copy-link" onclick="copyToClipboard()">Copiar Link</button>
     </div>
+
+    <script>
+        function copyToClipboard() {
+            const link = "https://nazare2006.github.io/seus-links-digital/";
+            navigator.clipboard.writeText(link).then(() => {
+                alert("Link copiado com sucesso!");
+            }).catch(err => {
+                console.error("Erro ao copiar:", err);
+            });
+        }
+    </script>
 </body>
 </html>

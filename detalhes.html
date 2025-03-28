@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #007bff;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .top-nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .top-nav a:hover, .active {
+            color: #ffdd57;
+        }
+        .container {
+            max-width: 900px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            margin-top: 80px;
+            text-align: left;
+            border-left: 5px solid #007bff;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+            font-size: 26px;
+        }
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-details img {
+            max-width: 80%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-details p {
+            font-size: 18px;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Loja</a>
+        <a href="ofertas.html">Ofertas</a>
+        <a href="contato.html">Contato</a>
+    </div>
+    <div class="container">
+        <h1>Detalhes do Produto</h1>
+        <div class="product-details">
+            <img id="product-image" src="" alt="Imagem do Produto">
+            <p><strong>Nome do Produto:</strong> <span id="product-name"></span></p>
+            <p><strong>Descrição:</strong> <span id="product-description"></span></p>
+            <p><strong>Preço:</strong> <span id="product-price"></span></p>
+        </div>
+    </div>
+    <script>
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get('name') || 'Produto Exemplo',
+                image: params.get('image') || 'img/produto-exemplo.jpg',
+                description: params.get('description') || 'Este é um excelente produto.',
+                price: params.get('price') || 'R$ 199,90'
+            };
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const product = getQueryParams();
+            document.getElementById("product-name").textContent = product.name;
+            document.getElementById("product-image").src = product.image;
+            document.getElementById("product-description").textContent = product.description;
+            document.getElementById("product-price").textContent = product.price;
+        });
+    </script>
+</body>
+</html>
