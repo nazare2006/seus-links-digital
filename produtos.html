@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
+    <title>Produtos Recomendados</title>
+    <meta name="description" content="Confira os melhores produtos recomendados e aproveite ofertas exclusivas!">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
     <style>
         body {
@@ -47,9 +48,6 @@
         .nav-menu a:hover, .active {
             background: #007bff;
             color: #fff;
-        }
-        .filter {
-            margin-bottom: 25px;
         }
         .products {
             display: grid;
@@ -100,7 +98,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Produtos Disponíveis</h1>
+        <h1>Produtos Recomendados</h1>
         <div class="nav-menu">
             <a href="index.html">Início</a>
             <a href="categorias.html">Categorias</a>
@@ -108,60 +106,26 @@
             <a href="ofertas.html">Ofertas</a>
             <a href="contato.html">Contato</a>
         </div>
-        <div class="filter">
-            <label for="categoria">Filtrar por categoria:</label>
-            <select id="categoria" onchange="filtrarProdutos()">
-                <option value="todos">Todos</option>
-                <option value="eletronicos">Eletrônicos</option>
-                <option value="moda">Moda</option>
-                <option value="casa">Casa</option>
-                <option value="esportes">Esportes</option>
-                <option value="acessorios">Acessórios</option>
-                <option value="livros">Livros</option>
-                <option value="beleza">Beleza</option>
-            </select>
-        </div>
         <div class="products" id="product-list">
             <div class="product-card" data-category="eletronicos">
                 <img src="img/produto6.jpg" alt="Notebook Gamer">
                 <h3>Notebook Gamer</h3>
                 <p>Alta performance para jogos e produtividade.</p>
-                <a href="#">Comprar</a>
+                <a href="#" target="_blank">Ver Oferta</a>
             </div>
             <div class="product-card" data-category="moda">
                 <img src="img/produto7.jpg" alt="Jaqueta de Couro">
                 <h3>Jaqueta de Couro</h3>
                 <p>Estilo e conforto para qualquer ocasião.</p>
-                <a href="#">Comprar</a>
+                <a href="#" target="_blank">Ver Oferta</a>
             </div>
             <div class="product-card" data-category="casa">
                 <img src="img/produto8.jpg" alt="Cafeteira Elétrica">
                 <h3>Cafeteira Elétrica</h3>
                 <p>Café fresco e delicioso todos os dias.</p>
-                <a href="#">Comprar</a>
-            </div>
-            <div class="product-card" data-category="beleza">
-                <img src="img/produto9.jpg" alt="Kit de Maquiagem">
-                <h3>Kit de Maquiagem Completo</h3>
-                <p>Realce sua beleza com produtos de qualidade.</p>
-                <a href="#">Comprar</a>
-            </div>
-            <div class="product-card" data-category="livros">
-                <img src="img/produto10.jpg" alt="Livro Bestseller">
-                <h3>Livro Bestseller</h3>
-                <p>Uma leitura envolvente e inspiradora.</p>
-                <a href="#">Comprar</a>
+                <a href="#" target="_blank">Ver Oferta</a>
             </div>
         </div>
     </div>
-    <script>
-        function filtrarProdutos() {
-            let categoriaSelecionada = document.getElementById("categoria").value;
-            let produtos = document.querySelectorAll(".product-card");
-            produtos.forEach(produto => {
-                produto.style.display = (categoriaSelecionada === "todos" || produto.getAttribute("data-category") === categoriaSelecionada) ? "block" : "none";
-            });
-        }
-    </script>
 </body>
 </html>

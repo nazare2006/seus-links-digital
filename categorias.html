@@ -16,7 +16,7 @@
             transition: background 0.3s, color 0.3s;
         }
         .top-bar {
-            background: #007bff;
+            background: #ff4500;
             color: white;
             padding: 10px;
             font-size: 18px;
@@ -56,6 +56,18 @@
         .filter {
             margin-bottom: 20px;
         }
+        .filter label {
+            font-size: 16px;
+            color: #333;
+        }
+        .filter select {
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
         .products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -82,6 +94,10 @@
             font-size: 18px;
             color: #333;
         }
+        .product-card p {
+            font-size: 14px;
+            color: #666;
+        }
         .product-card a {
             display: inline-block;
             margin-top: 10px;
@@ -107,8 +123,8 @@
         <h1>Produtos Disponíveis</h1>
         <div class="nav-menu">
             <a href="index.html">Início</a>
-            <a href="categorias.html">Categorias</a>
-            <a href="produtos.html" class="active">Produtos</a>
+            <a href="categorias.html" class="active">Categorias</a>
+            <a href="produtos.html">Produtos</a>
             <a href="ofertas.html">Ofertas</a>
             <a href="contato.html">Contato</a>
         </div>
