@@ -16,19 +16,17 @@
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f7f8fa;
-            transition: background-color 0.3s ease;
         }
 
         header {
             background: linear-gradient(135deg, #0061ff, #00c6ff);
             color: white;
-            padding: 50px 20px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 50px 20px;
         }
 
         header h1 {
-            font-size: 48px;
+            font-size: 36px;
             margin: 0;
         }
 
@@ -37,7 +35,6 @@
             justify-content: space-between;
             background-color: #333;
             padding: 10px 20px;
-            flex-wrap: wrap;
             align-items: center;
         }
 
@@ -63,9 +60,7 @@
 
         .menu {
             display: flex;
-            width: 100%;
-            justify-content: flex-end;
-            gap: 15px;
+            gap: 20px;
         }
 
         .hero {
@@ -73,20 +68,14 @@
             background-image: url('https://via.placeholder.com/1600x600');
             background-size: cover;
             background-position: center;
-            padding: 120px 20px;
+            padding: 80px 20px;
             color: white;
             text-align: center;
-            background-attachment: fixed;
         }
 
         .hero h2 {
-            font-size: 48px;
+            font-size: 36px;
             margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
         }
 
         .cta-button {
@@ -124,8 +113,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             transition: transform 0.3s;
-            cursor: pointer;
-            text-align: center;
         }
 
         .product-card:hover {
@@ -134,8 +121,7 @@
 
         .product-card img {
             width: 100%;
-            height: auto;
-            max-height: 250px;
+            height: 250px;
             object-fit: cover;
         }
 
@@ -170,8 +156,29 @@
             text-align: center;
         }
 
-        /* Menu hamburguer para telas pequenas */
+        /* Responsividade para dispositivos móveis */
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 28px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .cta-button {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
+
+            .products {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
             .menu {
                 display: none;
                 flex-direction: column;
@@ -182,33 +189,12 @@
                 padding: 20px 0;
             }
 
-            .menu-icon {
-                display: block;
-            }
-
             .menu.show {
                 display: flex;
             }
 
             nav a {
                 padding: 10px 0;
-            }
-
-            .hero h2 {
-                font-size: 32px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .cta-button {
-                font-size: 16px;
-                padding: 12px 24px;
-            }
-
-            .products {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
         }
     </style>
