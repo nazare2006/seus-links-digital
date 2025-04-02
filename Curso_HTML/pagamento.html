@@ -4,87 +4,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta name="X-Frame-Options" content="DENY">
-    <title>Página de Pagamento</title>
+    <title>Pagamento</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
             text-align: center;
             padding: 20px;
-            transition: background 0.3s, color 0.3s;
         }
         .container {
-            max-width: 400px;
+            max-width: 500px;
             background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
             margin: auto;
         }
         h1 {
-            font-size: 22px;
-            color: #333;
+            font-size: 24px;
+            color: #222;
+            margin-bottom: 20px;
         }
         .payment-options {
-            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
-        .payment-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
+        .payment-options button {
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            color: white;
+            transition: background 0.3s;
         }
-        .mbway {
-            background: #FF0000;
+        .mbway { background: #007bff; color: white; }
+        .mbway:hover { background: #0056b3; }
+        .cartao { background: #28a745; color: white; }
+        .cartao:hover { background: #218838; }
+        .paypal { background: #ffc107; color: black; }
+        .paypal:hover { background: #e0a800; }
+        .hidden { display: none; }
+        .card-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
         }
-        .cartao {
-            background: #007bff;
-        }
-        .stripe {
-            background: #6772e5;
-        }
-        .payment-button:hover {
-            opacity: 0.8;
-        }
-        .loader {
-            display: none;
-            margin: 20px auto;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 2s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .message {
-            display: none;
-            margin-top: 20px;
-            font-size: 18px;
-            color: green;
-        }
-        .back-button {
-            margin-top: 20px;
-            display: inline-block;
-            padding: 10px 15px;
-            background: #555;
-            color: white;
-            text-decoration: none;
+        .card-form input {
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .back-button:hover {
-            background: #333;
+        .card-form button {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .card-form button:hover {
+            background: #218838;
         }
     </style>
 </head>
@@ -92,23 +78,67 @@
     <div class="container">
         <h1>Escolha o Método de Pagamento</h1>
         <div class="payment-options">
-            <button class="payment-button mbway" onclick="confirmPayment('MbWay', 'https://www.mbway.pt')">💳 Pagar com MbWay</button>
-            <button class="payment-button cartao" onclick="confirmPayment('Cartão de Crédito', 'https://www.paypal.com')">💳 Pagar com Cartão de Crédito (PayPal)</button>
+            <button class="mbway" onclick="redirecionar(this, 'https://www.mbway.pt/')">Pagar com MB WAY</button>
+            <button class="cartao" onclick="mostrarFormularioCartao()">Pagar com Cartão de Crédito</button>
+            <button class="paypal" onclick="redirecionar(this, 'https://www.paypal.com/pt/home')">Pagar com PayPal Portugal</button>
         </div>
-        
-        <div class="message" id="confirmationMessage">
-            Obrigado pelo seu pagamento! Já recebemos sua transação. ✅
+
+        <!-- Formulário de pagamento por cartão de crédito -->
+        <div id="cartao-form" class="hidden">
+            <h2>Pagamento com Cartão</h2>
+            <form class="card-form" onsubmit="processarPagamento(event)">
+                <label for="nome">Nome no Cartão:</label>
+                <input type="text" id="nome" required>
+
+                <label for="numero">Número do Cartão:</label>
+                <input type="text" id="numero" maxlength="16" required>
+
+                <label for="validade">Validade (MM/AA):</label>
+                <input type="text" id="validade" maxlength="5" placeholder="MM/AA" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" maxlength="3" required>
+
+                <button type="submit">Finalizar Pagamento</button>
+            </form>
         </div>
-        
-        <a href="index.html" class="back-button" id="backButton">⬅ Voltar para a Página Inicial</a>
     </div>
 
     <script>
-        function confirmPayment(method, url) {
-            document.getElementById("confirmationMessage").style.display = "block";
-            setTimeout(() => {
-                window.location.href = url;
-            }, 3000); // Redireciona para o pagamento após 3 segundos
+        function redirecionar(botao, url) {
+            try {
+                botao.disabled = true; 
+                botao.innerText = "Redirecionando...";
+                let novaAba = window.open(url, "_blank");
+                
+                if (!novaAba || novaAba.closed || typeof novaAba.closed === "undefined") {
+                    alert("Por favor, permita pop-ups no navegador!");
+                }
+
+                setTimeout(() => {
+                    botao.disabled = false;
+                    botao.innerText = botao.classList.contains('mbway') ? "Pagar com MB WAY" :
+                                     botao.classList.contains('cartao') ? "Pagar com Cartão de Crédito" :
+                                     "Pagar com PayPal Portugal";
+                }, 3000);
+            } catch (error) {
+                alert("Erro ao redirecionar. Tente novamente!");
+                console.error("Erro de redirecionamento:", error);
+            }
+        }
+
+        function mostrarFormularioCartao() {
+            document.getElementById("cartao-form").classList.remove("hidden");
+        }
+
+        function processarPagamento(event) {
+            event.preventDefault();
+            
+            // Simulação de um processamento de pagamento
+            alert("Pagamento processado com sucesso!");
+            
+            // Aqui você poderia redirecionar para um sistema de pagamento real, como Stripe ou PayPal
+            // Exemplo: window.location.href = "https://checkout.stripe.com/pay/codigo_aqui";
         }
     </script>
 </body>

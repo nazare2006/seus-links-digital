@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .top-bar {
+            background: #ff4500;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .nav-menu a:hover {
+            color: #ff4500;
+            font-weight: bold;
+        }
+        .cart-container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            width: 80%;
+            max-width: 900px;
+        }
+        h1 {
+            font-size: 26px;
+            color: #333;
+        }
+        .cart-items {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .cart-item img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .cart-item-details {
+            flex-grow: 1;
+            max-width: 500px;
+        }
+        .cart-item p {
+            font-size: 14px;
+            color: #666;
+        }
+        .cart-item .price {
+            font-weight: bold;
+            color: #ff4500;
+        }
+        .total {
+            text-align: right;
+            font-size: 18px;
+            margin-top: 30px;
+        }
+        .total .price {
+            font-weight: bold;
+            color: #ff4500;
+        }
+        .cart-actions {
+            margin-top: 20px;
+        }
+        .cart-actions a {
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .cart-actions a:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">🔥 Promoções Especiais de Hoje! 🔥</div>
+    <div class="nav-menu">
+        <a href="index.html">Início</a>
+        <a href="categorias.html">Categorias</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="ofertas.html">Ofertas</a>
+        <a href="contato.html">Contato</a>
+        <a href="carrinho.html">Carrinho</a>
+    </div>
+    <div class="cart-container">
+        <h1>Carrinho de Compras</h1>
+        <div class="cart-items">
+            <!-- Item 1 -->
+            <div class="cart-item">
+                <img src="img/produto1.jpg" alt="Produto 1">
+                <div class="cart-item-details">
+                    <h3>Smartphone XYZ</h3>
+                    <p>Desempenho avançado e câmera incrível.</p>
+                </div>
+                <div class="cart-item-price">
+                    <p class="price">EUR 199,99</p>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="cart-item">
+                <img src="img/produto2.jpg" alt="Produto 2">
+                <div class="cart-item-details">
+                    <h3>Relógio Elegante</h3>
+                    <p>Perfeito para todas as ocasiões.</p>
+                </div>
+                <div class="cart-item-price">
+                    <p class="price">EUR 59,99</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="total">
+            <p>Total: <span class="price">EUR 259,98</span></p>
+        </div>
+
+        <div class="cart-actions">
+            <a href="produtos.html">Continuar Comprando</a>
+            <a href="checkout.html">Finalizar Compra</a>
+        </div>
+    </div>
+</body>
+</html>

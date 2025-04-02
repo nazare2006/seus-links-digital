@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja de Produtos Online</title>
+    <title>Ofertas - Loja de Produtos Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f8fa;
+            background-color: #f3f4f6; /* Cor de fundo mais suave */
             transition: background-color 0.3s ease;
         }
 
         header {
-            background: linear-gradient(135deg, #0061ff, #00c6ff);
+            background-color: #4CAF50; /* Verde mais suave */
             color: white;
             padding: 50px 20px;
             text-align: center;
@@ -45,13 +45,13 @@
         }
 
         nav a:hover {
-            background-color: #00c6ff;
+            background-color: #76c7c0; /* Verde claro */
             border-radius: 5px;
         }
 
         .hero {
             position: relative;
-            background-image: url('https://via.placeholder.com/1600x600');
+            background-image: url('https://via.placeholder.com/1600x600'); /* Mudar para uma imagem de alta qualidade */
             background-size: cover;
             background-position: center;
             padding: 120px 20px;
@@ -73,7 +73,7 @@
         }
 
         .cta-button {
-            background-color: #00c6ff;
+            background-color: #76c7c0; /* Verde claro */
             color: white;
             padding: 15px 30px;
             font-size: 18px;
@@ -84,7 +84,7 @@
         }
 
         .cta-button:hover {
-            background-color: #0061ff;
+            background-color: #4CAF50; /* Verde mais escuro */
         }
 
         @keyframes fadeIn {
@@ -96,24 +96,24 @@
             }
         }
 
-        .product-section {
+        .offer-section {
             padding: 40px 20px;
             text-align: center;
         }
 
-        .product-section h2 {
+        .offer-section h2 {
             font-size: 36px;
             margin-bottom: 40px;
         }
 
-        .products {
+        .offers {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
             animation: fadeIn 2s ease-in-out;
         }
 
-        .product-card {
+        .offer-card {
             background-color: white;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -122,30 +122,30 @@
             cursor: pointer;
         }
 
-        .product-card:hover {
+        .offer-card:hover {
             transform: translateY(-10px);
         }
 
-        .product-card img {
+        .offer-card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
         }
 
-        .product-card h3 {
+        .offer-card h3 {
             font-size: 22px;
             margin: 20px 0;
             color: #333;
         }
 
-        .product-card p {
+        .offer-card p {
             font-size: 16px;
             color: #666;
             margin-bottom: 20px;
         }
 
-        .product-card a {
-            background-color: #00c6ff;
+        .offer-card a {
+            background-color: #76c7c0; /* Verde claro */
             color: white;
             text-decoration: none;
             padding: 12px 25px;
@@ -154,8 +154,8 @@
             transition: background-color 0.3s ease;
         }
 
-        .product-card a:hover {
-            background-color: #0061ff;
+        .offer-card a:hover {
+            background-color: #4CAF50; /* Verde mais escuro */
         }
 
         footer {
@@ -170,7 +170,7 @@
 <body>
 
     <header>
-        <h1>Loja de Produtos Online</h1>
+        <h1>Ofertas Especiais - Loja de Produtos Online</h1>
     </header>
 
     <nav>
@@ -181,34 +181,34 @@
     </nav>
 
     <div class="hero">
-        <h2>Encontre os melhores produtos de tecnologia</h2>
-        <p>Oferecemos os produtos mais inovadores e com os melhores preços. Explore nossa loja e aproveite as ofertas exclusivas!</p>
-        <a href="produtos.html" class="cta-button">Ver Produtos</a>
+        <h2>Ofertas Exclusivas Para Você!</h2>
+        <p>Confira as promoções imperdíveis e garanta os melhores preços em produtos de tecnologia.</p>
+        <a href="produtos.html" class="cta-button">Ver Mais Produtos</a>
     </div>
 
-    <section class="product-section">
-        <h2>Produtos em Destaque</h2>
-        <div class="products">
-            <!-- Produto 1 -->
-            <div class="product-card">
-                <img src="https://ae01.alicdn.com/kf/S08520ac0ec1f454a97760a4103c17338R.jpg" alt="Fone Bluetooth">
+    <section class="offer-section">
+        <h2>Ofertas Imperdíveis</h2>
+        <div class="offers">
+            <!-- Oferta 1 -->
+            <div class="offer-card">
+                <img src="https://via.placeholder.com/250" alt="Fone Bluetooth em Promoção">
                 <h3>Fone Bluetooth</h3>
-                <p>Qualidade sonora incrível com design moderno.</p>
-                <a href="https://s.click.aliexpress.com/e/_oEQyhAv" target="_blank">Comprar</a>
+                <p>Compre agora com desconto e aproveite a qualidade sonora incrível.</p>
+                <a href="https://www.aliexpress.com/item/4001112345678" target="_blank">Comprar</a>
             </div>
-            <!-- Produto 2 -->
-            <div class="product-card">
-                <img src="https://ae01.alicdn.com/kf/Sf9566c254a794fe194afe259d4d58bb86.jpg" alt="Relógio Digital">
+            <!-- Oferta 2 -->
+            <div class="offer-card">
+                <img src="https://via.placeholder.com/250" alt="Relógio Digital em Promoção">
                 <h3>Relógio Digital</h3>
-                <p>Design elegante e funcionalidades inovadoras.</p>
-                <a href="https://s.click.aliexpress.com/e/_oliIW7P" target="_blank">Comprar</a>
+                <p>Aproveite a promoção especial para este modelo elegante.</p>
+                <a href="https://www.aliexpress.com/item/4001112345679" target="_blank">Comprar</a>
             </div>
-            <!-- Produto 3 -->
-            <div class="product-card">
-                <img src="https://ae01.alicdn.com/kf/A4059473ebf2040d3ad18b6de413d968eJ.jpg" alt="Samsung Galaxy A05S">
-                <h3>Samsung Galaxy A05S</h3>
-                <p>Desempenho incomparável com câmeras de alta qualidade.</p>
-                <a href="https://s.click.aliexpress.com/e/_oBAKN9r" target="_blank">Comprar</a>
+            <!-- Oferta 3 -->
+            <div class="offer-card">
+                <img src="https://via.placeholder.com/250" alt="Smartphone X em Oferta">
+                <h3>Smartphone X</h3>
+                <p>Desconto incrível em um smartphone de alta performance!</p>
+                <a href="https://www.aliexpress.com/item/4001112345680" target="_blank">Comprar</a>
             </div>
         </div>
     </section>
