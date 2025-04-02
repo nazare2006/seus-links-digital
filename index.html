@@ -10,7 +10,7 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box; /* Garantir que padding e bordas não afetem as dimensões */
+            box-sizing: border-box;
         }
 
         body {
@@ -63,6 +63,9 @@
 
         .menu {
             display: flex;
+            width: 100%;
+            justify-content: flex-end;
+            gap: 15px;
         }
 
         .hero {
@@ -171,15 +174,12 @@
         @media (max-width: 768px) {
             .menu {
                 display: none;
-                width: 100%;
                 flex-direction: column;
+                width: 100%;
+                gap: 10px;
                 text-align: center;
                 background-color: #333;
-            }
-
-            .menu a {
-                padding: 15px;
-                border-top: 1px solid #444;
+                padding: 20px 0;
             }
 
             .menu-icon {
@@ -189,10 +189,11 @@
             .menu.show {
                 display: flex;
             }
-        }
 
-        /* Estilos para dispositivos móveis */
-        @media (max-width: 768px) {
+            nav a {
+                padding: 10px 0;
+            }
+
             .hero h2 {
                 font-size: 32px;
             }
