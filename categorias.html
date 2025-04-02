@@ -4,166 +4,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    <title>Categorias - Meus Produtos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            text-align: center;
-            padding: 20px;
             margin: 0;
-            transition: background 0.3s, color 0.3s;
+            padding: 0;
         }
-        .top-bar {
-            background: #ff4500;
+
+        .top-nav {
+            background-color: #ff4500;
             color: white;
-            padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 900px;
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-            margin: auto;
-            animation: fadeIn 1s ease-in-out;
-        }
-        h1 {
-            font-size: 26px;
-            color: #333;
-            margin-bottom: 15px;
-        }
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .nav-menu a {
-            text-decoration: none;
-            color: #007bff;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .nav-menu a:hover, .active {
-            color: #ff4500;
-            font-weight: bold;
-        }
-        .filter {
-            margin-bottom: 20px;
-        }
-        .filter label {
-            font-size: 16px;
-            color: #333;
-        }
-        .filter select {
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            padding: 20px 0;
-        }
-        .product-card {
-            background: #ffffff;
             padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s ease-in-out;
         }
-        .product-card:hover {
+
+        .top-nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .top-nav a.active {
+            color: #ff9900;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            color: #333;
+        }
+
+        .category-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .category-card {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 250px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
             transform: scale(1.05);
         }
-        .product-card img {
-            max-width: 100%;
-            border-radius: 8px;
+
+        .category-card h3 {
+            font-size: 22px;
+            color: #ff4500;
+            margin: 15px 0;
         }
-        .product-card h3 {
-            margin: 10px 0;
-            font-size: 18px;
-            color: #333;
-        }
-        .product-card p {
-            font-size: 14px;
+
+        .category-card p {
+            font-size: 16px;
             color: #666;
         }
-        .product-card a {
-            display: inline-block;
+
+        .category-card a {
+            display: block;
             margin-top: 10px;
-            padding: 10px 15px;
-            background: #ff9900;
-            color: #fff;
-            text-decoration: none;
+            background-color: #ff4500;
+            color: white;
+            padding: 10px;
             border-radius: 5px;
+            text-decoration: none;
             font-weight: bold;
         }
-        .product-card a:hover {
-            background: #cc7a00;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+
+        .category-card a:hover {
+            background-color: #ff9900;
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">🔥 Promoções Especiais de Hoje! 🔥</div>
+    <div class="top-nav">
+        <a href="index.html">Início</a>
+        <a href="categorias.html" class="active">Categorias</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="ofertas.html">Ofertas</a>
+        <a href="contato.html">Contato</a>
+    </div>
+
     <div class="container">
-        <h1>Produtos Disponíveis</h1>
-        <div class="nav-menu">
-            <a href="index.html">Início</a>
-            <a href="categorias.html" class="active">Categorias</a>
-            <a href="produtos.html">Produtos</a>
-            <a href="ofertas.html">Ofertas</a>
-            <a href="contato.html">Contato</a>
-        </div>
-        <div class="filter">
-            <label for="categoria">Filtrar por categoria:</label>
-            <select id="categoria" onchange="filtrarProdutos()">
-                <option value="todos">Todos</option>
-                <option value="eletronicos">Eletrônicos</option>
-                <option value="moda">Moda</option>
-            </select>
-        </div>
-        <div class="products" id="product-list">
-            <div class="product-card" data-category="eletronicos">
-                <img src="img/produto1.jpg" alt="Produto 1">
-                <h3>Smartphone XYZ</h3>
-                <p>Desempenho avançado e câmera incrível.</p>
-                <a href="https://www.amazon.com/dp/SEU_CODIGO_AFILIADO" target="_blank">Comprar</a>
-            </div>
-            <div class="product-card" data-category="moda">
-                <img src="img/produto2.jpg" alt="Produto 2">
-                <h3>Relógio Elegante</h3>
-                <p>Perfeito para todas as ocasiões.</p>
-                <a href="https://www.amazon.com/dp/SEU_CODIGO_AFILIADO" target="_blank">Comprar</a>
-            </div>
+        <h1>Escolha uma Categoria</h1>
+        <div class="category-list">
+            <a href="produtos.html?categoria=tecnologia" class="category-card">
+                <h3>Tecnologia</h3>
+                <p>Produtos eletrônicos de última geração.</p>
+            </a>
+            <a href="produtos.html?categoria=moda" class="category-card">
+                <h3>Moda</h3>
+                <p>Roupas e acessórios modernos.</p>
+            </a>
+            <a href="produtos.html?categoria=beleza" class="category-card">
+                <h3>Beleza</h3>
+                <p>Produtos de cuidados pessoais e cosméticos.</p>
+            </a>
         </div>
     </div>
-    <script>
-        function filtrarProdutos() {
-            let categoriaSelecionada = document.getElementById("categoria").value;
-            let produtos = document.querySelectorAll(".product-card");
-            
-            produtos.forEach(produto => {
-                if (categoriaSelecionada === "todos" || produto.getAttribute("data-category") === categoriaSelecionada) {
-                    produto.style.display = "block";
-                } else {
-                    produto.style.display = "none";
-                }
-            });
-        }
-    </script>
 </body>
 </html>

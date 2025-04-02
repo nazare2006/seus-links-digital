@@ -1,109 +1,172 @@
 
-
+/* Estilos gerais */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f4f4f4;
-    text-align: center;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    color: #333;
 }
 
-header {
-    background-color: #007bff;
+/* Top Bar */
+.top-bar {
+    background: #ff4500;
+    color: white;
+    text-align: center;
     padding: 15px;
-    color: white;
-    text-align: left;
-    padding-left: 20px;
-}
-
-nav {
-    margin-top: 10px;
-}
-
-nav a {
-    margin: 0 10px;
-    color: white;
-    text-decoration: none;
+    font-size: 20px;
     font-weight: bold;
 }
 
-/* Layout de produtos, categorias e ofertas */
-.produtos, .categorias, .ofertas {
+/* Barra de navegação */
+.nav-menu {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 20px;
+    background: #fff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-/* Estilo de cada produto */
-.produto {
-    background: white;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    transition: transform 0.3s ease;
+.nav-menu a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
-/* Efeito ao passar o mouse */
-.produto:hover {
+.nav-menu a:hover {
+    color: #ff4500;
     transform: scale(1.05);
 }
 
-.produto img {
-    width: 100%;
-    border-radius: 5px;
+/* Container de conteúdo */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
 }
 
-/* Botão estilizado */
-.btn {
-    display: block;
-    background: #007bff;
+/* Produto */
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.product img:hover {
+    transform: scale(1.1);
+}
+
+.product h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.product p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.product .price {
+    font-weight: bold;
+    color: #ff4500;
+    font-size: 18px;
+}
+
+/* Carrinho de Compras */
+.cart-container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: auto;
+    text-align: left;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-item img {
+    width: 120px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+.cart-item .price {
+    font-weight: bold;
+    color: #ff4500;
+}
+
+/* Botões */
+button, .cart-actions a {
+    padding: 12px 20px;
+    background: #28a745;
     color: white;
     text-decoration: none;
-    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
     border-radius: 5px;
-    margin-top: 10px;
-    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease;
 }
 
-.btn:hover {
-    background-color: #0056b3;
+button:hover, .cart-actions a:hover {
+    background: #218838;
 }
 
-/* Responsividade para telas menores */
-@media (max-width: 1024px) {
-    .produto {
-        width: 45%; /* Produtos em 2 colunas para tablets */
-    }
-}
-
+/* Responsividade */
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
+    .product {
+        width: 100%;
     }
 
-    header {
-        padding: 10px;
+    .nav-menu {
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .produto {
-        width: 100%; /* Produtos em uma coluna para smartphones */
-    }
-
-    nav a {
-        margin: 5px;
-        display: block; /* Menu em uma coluna */
-    }
-
-    .produtos, .categorias, .ofertas {
-        justify-content: center;
-        padding: 10px 0;
-    }
-
-    .btn {
-        width: 100%; /* Botão ocupa toda a largura */
-        padding: 15px;
+    .cart-container {
+        width: 95%;
     }
 }
